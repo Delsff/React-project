@@ -21,8 +21,10 @@ export const Header = () => {
               alt='logo'
             />
             <ul className='flex flex-wrap gap-[80px] relative left-[130px] top-[15px]'>
-              <li className='font-[Poppins] cursor-pointer text-[white] text-[22px] font-[500] hover:text-gray-200'>
-                <Link to='/'>Home</Link>
+              <li className='font-[Poppins] cursor-pointer text-[white] text-[22px] font-[500] hover:text-gray-200 '>
+                <Link to='/' className='visited:text-gray-400'>
+                  Home
+                </Link>
               </li>
               <li className='font-[Poppins] cursor-pointer text-[white] text-[22px] font-[500] hover:text-gray-200'>
                 <Link to='/courses'>Courses</Link>
