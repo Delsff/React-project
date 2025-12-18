@@ -4,9 +4,9 @@ export const SecondHeader = () => {
     <>
       <div>
         <div className='w-[1465px] h-[83px] mx-auto flex items-center'>
-          <nav className='w-full flex items-center justify-between mt-[30px]'>
+          <nav className='w-full flex items-center justify-between mt-[30px] ml-[130px]'>
             <img
-              className='relative left-[40px] top-[20px] h-18 cursor-pointer'
+              className='relative  h-18 cursor-pointer'
               src='public\imgSecondpage\Group2.png'
               alt='logo'
             />
@@ -35,14 +35,14 @@ export const SecondHeader = () => {
                     alt='img'
                     className='relative left-[10px] bottom-[10px]'
                   />
-                  <div className='ml-[15px] mt-[5px] cursor-pointer'>
+                  <div className='ml-[45px] mt-[5px] cursor-pointer'>
                     <span className='font-[Poppins] font-[500] text-[20px]'>Lina </span>
                     <span className='text-[18px] inline-block rotate-90'>&gt;</span>
                   </div>
                 </div>
               </li>
             </ul>
-            <div className='flex flex wrap gap-[26px] relative right-[40px] top-[15px]'></div>
+            <div className='flex flex wrap gap-[16px] relative right-[10px] top-[15px]'></div>
           </nav>
         </div>
       </div>
