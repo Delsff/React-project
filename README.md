@@ -8,8 +8,6 @@ React-Project
 
 4.Sign Up page with registration form
 
-5.Sections: Courses, Careers, Blog, About Us
+5.Sections: Courses, Careers
 
-6.250k+ assisted students
-
-7.Free to join
+250k+ assisted students | Free to join
