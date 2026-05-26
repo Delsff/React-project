@@ -1,8 +1,51 @@
-export const ThreeMain = () => {
+import { useEffect, useRef } from 'react';
+
+export const ThreeMain: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const elements = containerRef.current?.querySelectorAll('.scroll-anim');
+
+    if (!elements || elements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries: IntersectionObserverEntry[]) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px 0px 0px',
+      },
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      <div className='flex flex-wrap w-[1500px] h-[900px] justify-between p-25'>
-        <div className='flex flex-col gap-[20px] text-left'>
+      <style>{`
+        .scroll-anim {
+          opacity: 0;
+          transform: translateY(8px);
+          transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          will-change: transform, opacity;
+        }
+
+        .scroll-anim.active {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      `}</style>
+      <div ref={containerRef} className='flex flex-wrap w-[1500px] h-[900px] justify-between p-25'>
+        <div className='scroll-anim flex flex-col gap-[20px] text-left'>
           <p className='text-[#696984] font-[500] text-[20px]'>---- TESTIMONIAL</p>
           <h1 className='text-[#2F327D] font-[700] text-[40px]'>What They Say?</h1>
           <p className='font-[Poppins] text-[24px] text-[#696984] font-[500]'>
@@ -23,11 +66,11 @@ export const ThreeMain = () => {
             </button>
           </div>
         </div>
-        <div>
-          <img src='public\imgMainSecond\MaskGroup.png' alt='img' className='px-[15px]' />
+        <div className='scroll-anim'>
+          <img src='/imgMainSecond/MaskGroup.png' alt='img' className='px-[15px]' />
           <div className='w-[600px] h-[325px] flex flex-wrap gap-[20px] bg-white border-1 rounded-lg inset-shadow-2xs p-8 relative bottom-[190px] left-[90px]'>
             <img
-              src='public\imgMainSecond\Rectangle30.png'
+              src='/imgMainSecond/Rectangle30.png'
               alt='img'
               className='absolute left-[-60px] top-[-58px]'
             />
@@ -45,7 +88,7 @@ export const ThreeMain = () => {
                 Gloria Rose
               </p>
               <div className='flex flex-col gap-[10px] ml-[400px] relative bottom-[40px]'>
-                <img src='public\imgMainSecond\Group 29.png' alt='img' />
+                <img src='/imgMainSecond/Group 29.png' alt='img' />
                 <p className='font-[Poppins] text-[#696984] font-[400]'>12 reviews at Yelp</p>
               </div>
             </div>
@@ -54,7 +97,7 @@ export const ThreeMain = () => {
             </button>
           </div>
         </div>
-        <div className='flex flex-col justify-center m-auto gap-[20px]'>
+        <div className='scroll-anim flex flex-col justify-center m-auto gap-[20px]'>
           <h1 className='text-[#2F327D] font-[Nunito Sans] font-[700] text-[38px]'>
             Lastest News and Resources
           </h1>
@@ -64,9 +107,9 @@ export const ThreeMain = () => {
         </div>
         <div className='w-[1550px] m-auto mt-[100px]'>
           <div className='flex flex-wrap gap-[80px]'>
-            <div className='flex flex-col gap-[30px] mr-[20px] text-left w-[475px] h-[450px]'>
-              <img src='public\imgMainSecond\Group40.png' alt='img' className='h-60 w-140' />
-              <img src='public\imgMainSecond\Group41.png' alt='img' className='w-30 h-10' />
+            <div className='scroll-anim flex flex-col gap-[30px] mr-[20px] text-left w-[475px] h-[450px]'>
+              <img src='/imgMainSecond/Group40.png' alt='img' className='h-60 w-140' />
+              <img src='/imgMainSecond/Group41.png' alt='img' className='w-30 h-10' />
               <p className='font-[Poppins] text-[#252641] font-[500] text-[25px]'>
                 Class adds $30 million to its balance sheet for <br /> a Zoom-friendly edtech
                 solution
@@ -82,11 +125,11 @@ export const ThreeMain = () => {
               </span>
             </div>
             <div className='flex flex-col gap-[30px]'>
-              <div className='relative flex flex-wrap gap-[26px]'>
+              <div className='scroll-anim relative flex flex-wrap gap-[26px]'>
                 <div>
-                  <img src='public\imgMainSecond\Rectangle33.png' alt='img' className='relative' />
+                  <img src='/imgMainSecond/Rectangle33.png' alt='img' className='relative' />
                   <img
-                    src='public\imgMainSecond\Group44.png'
+                    src='/imgMainSecond/Group44.png'
                     alt='img'
                     className='absolute top-[150px] left-[90px]'
                   />
@@ -101,11 +144,11 @@ export const ThreeMain = () => {
                   </p>
                 </div>
               </div>
-              <div className='relative flex flex-wrap gap-[26px]'>
+              <div className='scroll-anim relative flex flex-wrap gap-[26px]'>
                 <div>
-                  <img src='public\imgMainSecond\Group46.png' alt='img' className='relative' />
+                  <img src='/imgMainSecond/Group46.png' alt='img' className='relative' />
                   <img
-                    src='public\imgMainSecond\Group41.png'
+                    src='/imgMainSecond/Group41.png'
                     alt='img'
                     className='w-30 h-10 absolute top-[150px] left-[130px]'
                   />
@@ -120,11 +163,11 @@ export const ThreeMain = () => {
                   </p>
                 </div>
               </div>
-              <div className='relative flex flex-wrap gap-[26px]'>
+              <div className='scroll-anim relative flex flex-wrap gap-[26px]'>
                 <div>
-                  <img src='public\imgMainSecond\Group48.png' alt='img' className='relative' />
+                  <img src='/imgMainSecond/Group48.png' alt='img' className='relative' />
                   <img
-                    src='public\imgMainSecond\Group41.png'
+                    src='/imgMainSecond/Group41.png'
                     alt='img'
                     className='w-30 h-10 absolute top-[150px] left-[130px]'
                   />
