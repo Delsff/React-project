@@ -12,4 +12,4 @@ React-Project
 
 250k+ assisted students | Free to join
 
-[View online](https://imaginative-puffpuff-ca34ef.netlify.app/)
+[View online](https://onlineplatformreact.netlify.app/)
