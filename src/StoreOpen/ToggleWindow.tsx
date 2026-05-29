@@ -4,13 +4,13 @@ export const ToggleLogin = () => {
   const { openWindow } = useToggleWindow();
   return (
     <>
-      <div className='flex w-[250px] h-[59px] mb-4 justify-center bg-[#49BBBD99] rounded-full m-auto mt-[5px]'>
-        <button className='px-5 py-2 rounded-full text-[16px] font-medium bg-[#3d9da0] hover:bg-[#338F91] text-white w-[110px] h-[40px] m-auto cursor-pointer'>
+      <div className='flex w-[250px] h-[59px] mb-4 justify-center bg-[#49BBBD99] rounded-full m-auto mt-[5px] p-[4px]'>
+        <button className='rounded-full text-[16px] font-medium bg-[#3d9da0] text-white w-[115px] h-[40px] m-auto cursor-pointer shadow-md transform scale-102 transition-all duration-300'>
           Login
         </button>
         <button
           onClick={() => openWindow('registr')}
-          className='px-5 py-2 rounded-full text-[16px] font-medium text-[#FFFFFF] transition w-[110px] h-[40px] m-auto cursor-pointer hover:text-gray-200'
+          className='rounded-full text-[16px] font-medium text-[#FFFFFF] w-[115px] h-[40px] m-auto cursor-pointer transition-all duration-300 hover:bg-[#ffffff22] hover:text-gray-100'
         >
           Register
         </button>
@@ -18,18 +18,19 @@ export const ToggleLogin = () => {
     </>
   );
 };
+
 export const ToggleRegistr = () => {
   const { openWindow } = useToggleWindow();
   return (
     <>
-      <div className='flex w-[250px] h-[59px] mb-4 justify-center bg-[#49BBBD99] rounded-full m-auto mt-[5px]'>
+      <div className='flex w-[250px] h-[59px] mb-4 justify-center bg-[#49BBBD99] rounded-full m-auto mt-[5px] p-[4px]'>
         <button
           onClick={() => openWindow('login')}
-          className='px-5 py-2 rounded-full text-[16px] hover:text-gray-200 font-medium transition text-[white] w-[110px] h-[40px] m-auto cursor-pointer'
+          className='rounded-full text-[16px] font-medium text-[white] w-[115px] h-[40px] m-auto cursor-pointer transition-all duration-300 hover:bg-[#ffffff22] hover:text-gray-100'
         >
           Login
         </button>
-        <button className='px-5 py-2 rounded-full text-[16px] font-medium bg-[#3d9da0] text-white w-[110px] h-[40px] m-auto cursor-pointer  hover:bg-[#338F91] '>
+        <button className='rounded-full text-[16px] font-medium bg-[#3d9da0] text-white w-[115px] h-[40px] m-auto cursor-pointer shadow-md transform scale-102 transition-all duration-300'>
           Register
         </button>
       </div>

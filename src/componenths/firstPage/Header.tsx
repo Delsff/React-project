@@ -81,30 +81,27 @@ export const Header = () => {
           <div className='relative w-full h-[800px] '>
             <div className='relative h-full'>
               <img
-                src='public/imgHeader/lovely-teenage-girl-with-curly-hair-posing-yellow-tshirt-min.png'
+                src='/imgHeader/girl.png'
                 alt='img'
                 className='absolute bottom-[25%] right-[5%]'
               />
               <img
-                src='public/imgHeader/Group1.png'
+                src='/imgHeader/Group1.png'
                 alt='img'
                 className='absolute bottom-[100%] left-[85%]'
               />
-
               <img
-                src='public/imgHeader/Group2.png'
+                src='/imgHeader/Group2.png'
                 alt='Congrats'
                 className='absolute bottom-[94%] left-[40%] h-22'
               />
-
               <img
-                src='public/imgHeader/Group3.png'
+                src='/imgHeader/Group3.png'
                 alt='img'
                 className='absolute bottom-[45%] left-[42%] h-43'
               />
-
               <img
-                src='public/imgHeader/Group4.png'
+                src='/imgHeader/Group4.png'
                 alt='img'
                 className='absolute top-[10%] right-[3%] h-26'
               />

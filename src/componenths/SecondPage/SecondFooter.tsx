@@ -53,9 +53,9 @@ export const FooterEmail = () => {
 export const SecondFooter = () => {
   return (
     <>
-      <footer className='w-[1600px] h-[593px] bg-[#252641] relative top-[1200px] items-center justify-center'>
+      <footer className='w-[1600px] h-[593px] bg-[#252641] items-center justify-center'>
         <div className='flex justify-center m-auto flex-wrap gap-[30px] items-center pt-[50px]'>
-          <img src='public\imgHeader\logo.png' alt='img' />
+          <img src='/imgHeader/logo.png' alt='img' />
           <span className='text-[#626381]'>
             |<br />| <br />|
           </span>

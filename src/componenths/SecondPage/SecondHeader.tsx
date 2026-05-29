@@ -7,7 +7,7 @@ export const SecondHeader = () => {
           <nav className='w-full flex items-center justify-between mt-[30px] ml-[130px]'>
             <img
               className='relative  h-18 cursor-pointer'
-              src='public\imgSecondpage\Group2.png'
+              src='/imgSecondpage/Group2.png'
               alt='logo'
             />
             <ul className='flex flex-wrap gap-[80px] relative left-[130px] top-[15px]'>
@@ -31,7 +31,7 @@ export const SecondHeader = () => {
               <li>
                 <div className='flex flex-wrap gap-[15px]'>
                   <img
-                    src='public\imgSecondpage\Group1.png'
+                    src='/imgSecondpage/Group1.png'
                     alt='img'
                     className='relative left-[10px] bottom-[10px]'
                   />
