@@ -1,8 +1,19 @@
+import { useEffect } from 'react';
 import { useToggleWindow } from '../store/Window';
 import FormRegistr from '../validateForm/FormRegistr';
 
 export const CloseWindowRegistr = () => {
-  const { closeWindow } = useToggleWindow();
+  const { isOpen, closeWindow } = useToggleWindow();
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
   return (
     <>
       <style>{`
