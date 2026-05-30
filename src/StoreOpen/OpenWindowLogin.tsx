@@ -28,7 +28,7 @@ export const CloseWindow = () => {
       <div className='w-[1280px] h-[650px] bg-[white] fixed flex justify-center mt-[50px] m-auto inset-0 z-40 rounded-md shadow-2xl animate-popup'>
         <div className='w-[1140px] h-[550px] flex items-center justify-between'>
           <div>
-            <img src='public\imgMain\Group7.png' alt='img' className='h-155 ml-[41px] mt-[95px]' />
+            <img src='/imgMain/Group7.png' alt='img' className='h-155 ml-[41px] mt-[95px]' />
           </div>
           <div>
             <FormLogin />
