@@ -42,12 +42,29 @@ export default function FormRegistr() {
   }, [reset]);
   return (
     <>
+      <style>{`
+  @keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .animate-popup {
+    animation: slideUpFade 0.35s ease-out forwards;
+  }
+  .animate-item {
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-fill-mode: backwards;
+  }
+`}</style>
       <form onSubmit={handleSubmit(onSubmit)} className='w-[410px] h-[600px] mx-[20px] mt-[115px]'>
-        <h1 className='font-[Poppins] text-[20px]'>Welcome to lorem..!</h1>
+        <h1 className='font-[Poppins] text-[20px] animate-item'>Welcome to lorem..!</h1>
         <div>
           <ToggleRegistr />
         </div>
-        <p className='font-[Poppins] mt-[30px] text-[15px]'>
+        <p className='font-[Poppins] mt-[30px] text-[15px] animate-item'>
           Lorem Ipsum is simply dummy text of the printing and <br /> typesetting industry.
         </p>
         <div className='text-left flex flex-col gap-[10px] mt-[20px]'>
@@ -58,7 +75,7 @@ export default function FormRegistr() {
           <input
             type='email'
             {...register('email')}
-            className='w-[435px] h-[45px] border-1 border-[#49BBBD] rounded-full placeholder: pl-[30px]'
+            className='w-[435px] h-[45px] border-1 border-[#49BBBD] rounded-full placeholder: pl-[30px] animate-item'
             placeholder='Enter your Email Address'
           />
         </div>
@@ -70,10 +87,10 @@ export default function FormRegistr() {
             id='name'
             {...register('name')}
             placeholder='Enter your User Name'
-            className='w-[435px] h-[45px] border-1 border-[#49BBBD] rounded-full placeholder: pl-[30px]'
+            className='w-[435px] h-[45px] border-1 border-[#49BBBD] rounded-full placeholder: pl-[30px] animate-item'
           />
         </div>
-        <div className='text-left flex flex-col gap-[10px] mt-[20px]'>
+        <div className='text-left flex flex-col gap-[10px] mt-[20px] animate-item'>
           <div className='flex flex-wrap gap-[10px]'>
             <h5>Password:</h5>{' '}
             {errors.password && <p className='text-[red]'>{errors.password.message}</p>}
@@ -82,21 +99,21 @@ export default function FormRegistr() {
             type='password'
             {...register('password')}
             placeholder='Enter your password'
-            className='w-[435px] h-[45px] border-1 border-[#49BBBD] rounded-full placeholder: pl-[30px]'
+            className='w-[435px] h-[45px] border-1 border-[#49BBBD] rounded-full placeholder: pl-[30px] animate-item'
           />
         </div>
         <div className='flex justify-between w-[500px] my-[20px]'>
-          <label className='flex items-center gap-[15px]'>
+          <label className='flex items-center gap-[15px] animate-item'>
             <input type='checkbox' className='w-[20px] h-[20px] cursor-pointer' /> Remember me
           </label>
-          <a href='#' className='float-right'>
+          <a href='#' className='float-right animate-item'>
             Forgot password?
           </a>
         </div>
         <div>
           <button
             className='font-[Poppins] cursor-pointer text-[black] text-[19px] font-[500] w-[210px] h-[45px] 
-              rounded-full bg-[#49BBBD] hover:bg-[#3EA5A6] transition ml-[300px] mb-[15px]'
+              rounded-full bg-[#49BBBD] hover:bg-[#3EA5A6] transition ml-[300px] mb-[15px] animate-item'
           >
             Registr
           </button>
