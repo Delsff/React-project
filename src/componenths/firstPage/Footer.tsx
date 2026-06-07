@@ -12,7 +12,6 @@ export const schem = yup
     email: yup.string().required('This field is required').email('invalid data'),
   })
   .required();
-
 export const FooterEmail: React.FC = () => {
   const {
     register,
@@ -28,37 +27,35 @@ export const FooterEmail: React.FC = () => {
     reset();
   };
   return (
-    <>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-wrap gap-[30px] justify-center pt-[30px] h-auto w-[600px] m-auto'
-      >
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className='flex flex-col sm:flex-row gap-4 justify-center items-center pt-8 max-w-[600px] w-full mx-auto px-4'
+    >
+      <div className='flex flex-col w-full sm:w-auto relative pb-6 sm:pb-0'>
         <input
           type='email'
           {...register('email')}
           placeholder='Your Email'
-          className='w-[350px] h-[60px] border-1 border-[#83839A] rounded-full placeholder:pl-[10px] placeholder:text-[#83839A] placeholder:font-[Poppins] font-[600] caret-white pl-[30px] text-[white]'
+          className='w-full sm:w-[350px] h-[60px] border border-[#83839A] rounded-full placeholder:text-[#83839A] placeholder:font-[Poppins] font-[600] caret-white pl-6 text-white bg-transparent outline-none focus:border-[#49BBBD] transition-colors'
         />
-        <button className='w-[160px] h-[60px] bg-[#49BBBD] rounded-full text-white font-[Poppins] font-[500] cursor-pointer text-[19px] hover:bg-[#38999A]'>
-          Subscribe
-        </button>
-        <div className='mt-[10px] ml-[100px]'>
-          <span>
-            <div>{errors.email && <p className='text-[red]'>{errors.email.message}</p>}</div>
-          </span>
-        </div>
-      </form>
-    </>
+        {errors.email && (
+          <p className='text-red-500 text-sm mt-1 absolute bottom-0 left-4 sm:top-[62px] sm:bottom-auto'>
+            {errors.email.message}
+          </p>
+        )}
+      </div>
+      <button className='w-full sm:w-[160px] h-[60px] bg-[#49BBBD] rounded-full text-white font-[Poppins] font-[500] cursor-pointer text-[19px] hover:bg-[#38999A] transition-colors shrink-0'>
+        Subscribe
+      </button>
+    </form>
   );
 };
 
 export const Footer: React.FC = () => {
   const footerRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const element = footerRef.current?.querySelector('.scroll-anim');
     if (!element) return;
-
     const observer = new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
@@ -69,8 +66,7 @@ export const Footer: React.FC = () => {
         });
       },
       {
-        threshold: 0.2,
-        rootMargin: '0px 0px 0px 0px',
+        threshold: 0.17,
       },
     );
 
@@ -83,7 +79,7 @@ export const Footer: React.FC = () => {
       <style>{`
         .scroll-anim {
           opacity: 0;
-          transform: translateY(8px);
+          transform: translateY(15px); 
           transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
                       transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
           will-change: transform, opacity;
@@ -94,34 +90,30 @@ export const Footer: React.FC = () => {
           transform: translateY(0);
         }
       `}</style>
-
       <footer
         ref={footerRef}
-        className='w-[1600px] h-[650px] bg-[#252641] relative top-[1200px] items-center justify-center'
+        className='w-full h-auto bg-[#252641] py-12 md:py-16 mt-12 text-center'
       >
-        <div className='scroll-anim'>
-          <div className='flex justify-center m-auto flex-wrap gap-[30px] items-center pt-[50px]'>
-            <img src='/imgHeader/logo.png' alt='img' />
-            <span className='text-[#626381]'>
-              |<br />| <br />|
-            </span>
-            <p className='text-[#FFFFFF] font-[Poppins] font-[600] text-[20px]'>
+        <div className='scroll-anim max-w-[1520px] mx-auto px-4 flex flex-col gap-8 md:gap-12'>
+          <div className='flex justify-center flex-wrap gap-4 sm:gap-6 items-center'>
+            <img src='/imgHeader/logo.png' alt='logo' className='h-8 sm:h-10 object-contain' />
+            <div className='w-[1px] h-8 bg-[#626381] hidden sm:block' />
+            <p className='text-white font-[Poppins] font-[600] text-[16px] sm:text-[20px] text-left leading-tight'>
               Virtual Class <br /> for Zoom
             </p>
           </div>
-          <div>
-            <p className='font-[Poppins] font-[600] text-[26px] pt-[120px] text-[#B2B3CF]'>
+          <div className='flex flex-col gap-2'>
+            <p className='font-[Poppins] font-[600] text-[20px] md:text-[26px] text-[#B2B3CF]'>
               Subscribe to get our Newsletter
             </p>
+            <FooterEmail />
           </div>
-          <FooterEmail />
-          <div className='pt-[60px]'>
-            <p className='text-[#626381] font-[Poppins] text-[20px] font-[500]'>
-              Careers | Privacy Policy | Terms & Conditions
+          <div className='flex flex-col justify-center items-center gap-3 border-t border-gray-700/30 pt-6 mt-4'>
+            <p className='text-[#626381] font-[Poppins] text-[14px] md:text-[18px] font-[500] hover:text-gray-400 transition-colors cursor-pointer leading-relaxed'>
+              <a href='#'> Careers | Privacy Policy | Terms & Conditions</a>
             </p>
-            <br />
-            <p className='text-[#626381] font-[Poppins] text-[20px] font-[500]'>
-              © 2021 Class Technologies Inc.
+            <p className='text-[#626381] font-[Poppins] text-[14px] md:text-[18px] font-[500]'>
+              © 2026 Class Technologies Inc.
             </p>
           </div>
         </div>

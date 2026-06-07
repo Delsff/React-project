@@ -58,7 +58,9 @@ export default function FormLogin() {
   }
 `}</style>
       <form onSubmit={handleSubmit(onSubmit)} className='w-[410px] h-[600px] mx-[40px] mt-[115px]'>
-        <h1 className='font-[Poppins] text-[20px] animate-item'>Welcome to lorem..!</h1>
+        <h1 className='font-[Poppins] text-[20px] flex justify-center animate-item'>
+          Welcome to lorem..!
+        </h1>
         <div>
           <ToggleLogin />
         </div>

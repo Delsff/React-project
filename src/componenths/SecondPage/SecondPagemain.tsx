@@ -2,12 +2,9 @@ import { useEffect, useRef } from 'react';
 
 export const SecondPageMain = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const elements = containerRef.current?.querySelectorAll('.scroll-anim');
-
     if (!elements || elements.length === 0) return;
-
     const observer = new IntersectionObserver(
       (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
@@ -18,8 +15,8 @@ export const SecondPageMain = () => {
         });
       },
       {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.2,
+        rootMargin: '0px 0px -30px 0px',
       },
     );
     elements.forEach((el) => observer.observe(el));
@@ -29,9 +26,25 @@ export const SecondPageMain = () => {
   return (
     <>
       <style>{`
+        /* Анимация мгновенного появления для главного промо-блока */
+        @keyframes mainHeroFadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-hero-block {
+          animation: mainHeroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Анимации по скроллу для остальных блоков */
         .scroll-anim {
           opacity: 0;
-          transform: translateY(40px); 
+          transform: translateY(30px); 
           transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
                       transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
           will-change: transform, opacity;
@@ -40,144 +53,157 @@ export const SecondPageMain = () => {
           opacity: 1;
           transform: translateY(0);
         }
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
-        .delay-4 { transition-delay: 0.4s; }
+        .delay-1 { transition-delay: 0.05s; }
+        .delay-2 { transition-delay: 0.1s; }
+        .delay-3 { transition-delay: 0.15s; }
+        .delay-4 { transition-delay: 0.2s; }
       `}</style>
-      <div ref={containerRef} className='w-[1550px] overflow-x-hidden m-auto pb-[50px]'>
-        <div className='w-[1550px] h-[667px] bg-[#bfd7f0] m-auto mt-[50px]'>
-          <div className='flex flex-wrap justify-between p-20'>
-            <div className='flex flex-col gap-[10px] text-left'>
-              <h1 className='font-[Poppins] text-[24px]'>
+      <div
+        ref={containerRef}
+        className='w-full max-w-[1440px] overflow-x-hidden mx-auto pb-12 px-4 sm:px-6 lg:px-8'
+      >
+        <div className='w-full h-auto bg-[#bfd7f0] rounded-2xl mt-6 lg:mt-12 overflow-hidden animate-hero-block'>
+          <div className='flex flex-col-reverse lg:flex-row items-center justify-between p-6 sm:p-12 lg:p-16 gap-8'>
+            <div className='flex flex-col gap-4 text-center lg:text-left items-center lg:items-start max-w-[650px] w-full'>
+              <h1 className='font-[Poppins] text-[18px] sm:text-[24px]'>
                 By Themadbrains in{' '}
-                <span className='text-[#49BBBD] font-[Poppins] text-[24px]'>inspiration</span>
+                <span className='text-[#49BBBD] font-[Poppins] font-semibold'>inspiration</span>
               </h1>
-              <p className='text-[#2F327D] text-[44px] font-[600] font-[Poppins]'>
-                Why Swift UI Should Be on the <br /> Radar of Every Mobile <br /> Developer
+              <p className='text-[#2F327D] text-[28px] sm:text-[36px] lg:text-[44px] font-[600] font-[Poppins] leading-tight'>
+                Why Swift UI Should Be on the Radar of Every Mobile Developer
               </p>
-              <p className='text-[#696984] font-[Poppins] text-[25px]'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br /> sed do eiusmod
-                tempos Lorem ipsum dolor sitamet,
-                <br /> consectetur adipiscing elit, sed do eiusmod tempor
+              <p className='text-[#696984] font-[Poppins] text-[16px] sm:text-[20px] lg:text-[22px] leading-relaxed'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Lorem
+                ipsum dolor sitamet, consectetur adipiscing elit, sed do eiusmod tempor
               </p>
-              <button className='w-[236px] h-[63px] mt-[10px] mr-[50px] text-[white] bg-[#49BBBD] font-[Poppins] p-auto cursor-pointer text-[18px] rounded-full hover:bg-[#38999A] transition'>
+              <button className='w-full sm:w-[236px] h-[60px] mt-4 text-[white] bg-[#49BBBD] font-[Poppins] cursor-pointer text-[18px] rounded-full hover:bg-[#38999A] transition shadow-md active:scale-95'>
                 Start learning now
               </button>
             </div>
-            <div>
-              <img src='/imgSecondpage/Group3.png' alt='img' className='h-120' />
+            <div className='w-full lg:w-1/2 flex justify-center'>
+              <img
+                src='/imgSecondpage/Group3.png'
+                alt='img'
+                className='w-full max-w-[450px] h-auto object-contain'
+              />
             </div>
           </div>
         </div>
-        <div className='scroll-anim w-[1550px] mt-[80px]'>
-          <h1 className='font-[Poppins] font-[700] text-[30px] ml-[80px] text-left'>
+        <div className='scroll-anim w-full mt-16 sm:mt-24'>
+          <h1 className='font-[Poppins] font-[700] text-[24px] sm:text-[30px] text-center sm:text-left mb-6'>
             Reading blog list
           </h1>
-          <div className='flex flex-wrap gap-[50px] justify-center mt-[20px] mr-[50px]'>
-            <img src='/imgSecondpage/Group4.png' alt='img' className='h-70' />
-            <img src='/imgSecondpage/Group5.png' alt='img' className='h-70' />
-            <img src='/imgSecondpage/Group6.png' alt='img' className='h-70' />
-            <img src='/imgSecondpage/Group7.png' alt='img' className='h-70' />
+          <div className='grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 justify-items-center'>
+            <img
+              src='/imgSecondpage/Group4.png'
+              alt='img'
+              className='w-full max-w-[280px] h-auto object-contain'
+            />
+            <img
+              src='/imgSecondpage/Group5.png'
+              alt='img'
+              className='w-full max-w-[280px] h-auto object-contain'
+            />
+            <img
+              src='/imgSecondpage/Group6.png'
+              alt='img'
+              className='w-full max-w-[280px] h-auto object-contain'
+            />
+            <img
+              src='/imgSecondpage/Group7.png'
+              alt='img'
+              className='w-full max-w-[280px] h-auto object-contain'
+            />
           </div>
         </div>
-        <div className='scroll-anim bg-[#bfd7f0] w-[1550px] h-auto pb-[60px] mt-[50px]'>
-          <div className='flex justify-between p-[70px]'>
-            <h1 className='font-[Poppins] font-[700] text-[30px]'>Related Blog </h1>
-            <a href='#' className='cursor-pointer text-[20px] text-[#49BBBD] hover:text-[#38999A]'>
+        <div className='scroll-anim bg-[#bfd7f0] w-full h-auto rounded-2xl pb-12 mt-16 sm:mt-24 px-4 sm:px-8'>
+          <div className='flex justify-between items-center py-8 sm:py-12'>
+            <h1 className='font-[Poppins] font-[700] text-[24px] sm:text-[30px] text-[#2F327D]'>
+              Related Blog
+            </h1>
+            <a
+              href='#'
+              className='cursor-pointer text-[16px] sm:text-[20px] font-medium text-[#49BBBD] hover:text-[#38999A] transition-colors'
+            >
               See all
             </a>
           </div>
-          <div className='flex flex-wrap gap-[70px] justify-center'>
-            <div className='w-[680px] h-[700px] border-1 border-none rounded-md bg-[white]'>
-              <div className='flex flex-col items-center mt-[30px]'>
-                <img src='public\imgSecondpage\Rectangle1.png' alt='img' className='w-150' />
-                <p className='font-[Poppins] text-[26px] mr-[70px] text-left'>
-                  Class adds $30 million to its balance sheet for a <br /> Zoom-friendly edtech
-                  solution
-                </p>
-                <div className='flex flex-wrap gap-[15px] relative right-[220px] top-[20px]'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 justify-items-center'>
+            {[{ img: 'Rectangle1.png' }, { img: 'Group10.png' }].map((item, idx) => (
+              <div
+                key={idx}
+                className='w-full max-w-[640px] h-auto rounded-xl bg-[white] p-5 sm:p-6 flex flex-col justify-between shadow-md'
+              >
+                <div className='flex flex-col text-center sm:text-left items-center sm:items-start'>
                   <img
-                    src='/imgSecondpage/Group1.png'
+                    src={`/imgSecondpage/${item.img}`}
                     alt='img'
-                    className='relative left-[10px] bottom-[10px]'
+                    className='w-full h-auto object-cover rounded-lg mb-4'
                   />
-                  <div className='ml-[15px] mt-[5px] cursor-pointer'>
-                    <span className='font-[Poppins] font-[500] text-[20px]'>Lina </span>
-                    <span className='text-[18px] inline-block rotate-90'>&gt;</span>
+                  <p className='font-[Poppins] text-[18px] sm:text-[22px] lg:text-[24px] font-semibold text-[#2F327D] leading-snug mb-3'>
+                    Class adds $30 million to its balance sheet for a Zoom-friendly edtech solution
+                  </p>
+                  <div className='flex items-center justify-center sm:justify-start gap-3 my-2 w-full sm:w-auto'>
+                    <img
+                      src='/imgSecondpage/Group1.png'
+                      alt='author'
+                      className='w-8 h-8 rounded-full'
+                    />
+                    <div className='cursor-pointer flex items-center gap-1'>
+                      <span className='font-[Poppins] font-[500] text-[15px] text-[#252641]'>
+                        Lina
+                      </span>
+                      <span className='text-[12px] inline-block rotate-90 text-gray-500'>&gt;</span>
+                    </div>
                   </div>
-                </div>
-                <p className='text-[#696984] font-[Poppins] text-[23px] mt-[30px] text-left'>
-                  Class, launched less than a year ago by Blackboard co-founder <br /> Michael
-                  Chasen, integrates exclusively...
-                </p>
-              </div>
-              <div className='flex justify-between p-[50px]'>
-                <span className='text-[#696984] text-[20px]'>
-                  <a href='#' className='cursor-pointer underline'>
-                    Read more
-                  </a>
-                </span>
-                <div className='flex flex-wrap gap-[20px]'>
-                  <img src='/imgSecondpage/.png' alt='img' />
-                  <p className='text-[#696984] font-[Poppins]'> 251,232</p>
-                </div>
-              </div>
-            </div>
 
-            <div className='w-[680px] h-[700px] border-1 border-none rounded-md bg-[white]'>
-              <div className='flex flex-col items-center mt-[30px]'>
-                <img src='/imgSecondpage/Group10.png' alt='img' className='w-150' />
-                <p className='font-[Poppins] text-[26px] mr-[70px] text-left'>
-                  Class adds $30 million to its balance sheet for a <br /> Zoom-friendly edtech
-                  solution
-                </p>
-                <div className='flex flex-wrap gap-[15px] relative right-[220px] top-[20px]'>
-                  <img
-                    src='/imgSecondpage/Group1.png'
-                    alt='img'
-                    className='relative left-[10px] bottom-[10px]'
-                  />
-                  <div className='ml-[15px] mt-[5px] cursor-pointer'>
-                    <span className='font-[Poppins] font-[500] text-[20px]'>Lina </span>
-                    <span className='text-[18px] inline-block rotate-90'>&gt;</span>
-                  </div>
+                  <p className='text-[#696984] font-[Poppins] text-[14px] sm:text-[16px] mt-2 leading-relaxed'>
+                    Class, launched less than a year ago by Blackboard co-founder Michael Chasen,
+                    integrates exclusively...
+                  </p>
                 </div>
-                <p className='text-[#696984] font-[Poppins] text-[23px] mt-[30px] text-left'>
-                  Class, launched less than a year ago by Blackboard co-founder <br /> Michael
-                  Chasen, integrates exclusively...
-                </p>
-              </div>
-              <div className='flex justify-between p-[50px]'>
-                <span className='text-[#696984] text-[20px]'>
-                  <a href='#' className='cursor-pointer underline'>
+
+                <div className='flex justify-between items-center mt-6 pt-4 border-t border-gray-100 w-full'>
+                  <a
+                    href='#'
+                    className='cursor-pointer underline text-[#696984] hover:text-[#49BBBD] text-[15px] sm:text-[16px] font-medium'
+                  >
                     Read more
                   </a>
-                </span>
-                <div className='flex flex-wrap gap-[20px]'>
-                  <img src='/imgSecondpage/.png' alt='img' />
-                  <p className='text-[#696984] font-[Poppins]'> 251,232</p>
+                  <div className='flex items-center gap-2 text-[#696984] text-[14px] sm:text-[16px]'>
+                    <img
+                      src='/imgSecondpage/.png'
+                      alt='views'
+                      className='w-5 h-5 object-contain'
+                    />
+                    <p className='font-[Poppins]'>251,232</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
-          <div className='flex mt-[50px] justify-end flex-wrap gap-[20px] p-[50px]'>
-            <button className='rotate-180 cursor-pointer w-[50px] h-[50px] bg-[#49BBBD80] hover:bg-[#49BBBD] text-[white]'>
+          <div className='flex mt-8 justify-center sm:justify-end gap-4'>
+            <button className='rotate-180 cursor-pointer w-[45px] h-[45px] sm:w-[50px] sm:h-[50px] bg-[#49BBBD80] hover:bg-[#49BBBD] text-[white] flex items-center justify-center rounded-lg transition-colors'>
               &gt;
             </button>
-            <button className='cursor-pointer bg-[#49BBBD] w-[50px] h-[50px] text-[white] hover:bg-[#3aa5a7]'>
+            <button className='cursor-pointer bg-[#49BBBD] w-[45px] h-[45px] sm:w-[50px] sm:h-[50px] text-[white] hover:bg-[#3aa5a7] flex items-center justify-center rounded-lg transition-colors'>
               &gt;
             </button>
           </div>
         </div>
-        <div className='w-[1550px] h-auto pb-[40px] mt-[100px]'>
-          <div className='scroll-anim flex justify-between p-[70px]'>
-            <h1 className='font-[Poppins] font-[700] text-[30px]'>Marketing Articles</h1>
-            <a href='#' className='cursor-pointer text-[20px] text-[#49BBBD] hover:text-[#38999A]'>
+        <div className='w-full h-auto mt-16 sm:mt-24'>
+          <div className='scroll-anim flex justify-between items-center mb-8'>
+            <h1 className='font-[Poppins] font-[700] text-[24px] sm:text-[30px] text-[#2F327D]'>
+              Marketing Articles
+            </h1>
+            <a
+              href='#'
+              className='cursor-pointer text-[16px] sm:text-[20px] font-medium text-[#49BBBD] hover:text-[#38999A] transition-colors'
+            >
               See all
             </a>
           </div>
-          <div className='flex flex-wrap justify-center gap-[40px] items-stretch'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch justify-items-center'>
             {[
               { img: 'Rectangle2.png', delay: 'delay-1' },
               { img: 'Group86.png', delay: 'delay-2' },
@@ -186,43 +212,44 @@ export const SecondPageMain = () => {
             ].map((card, idx) => (
               <div
                 key={idx}
-                className={`scroll-anim ${card.delay} w-[350px] border border-gray-100 rounded-xl shadow-lg bg-white flex flex-col justify-between p-[20px]`}
+                className={`scroll-anim ${card.delay} w-full max-w-[340px] border border-gray-100 rounded-xl shadow-md bg-white flex flex-col justify-between p-4 sm:p-5 transition-transform hover:-translate-y-1 hover:shadow-lg`}
               >
-                <div className='flex flex-col text-left w-full'>
+                <div className='flex flex-col text-center sm:text-left items-center sm:items-start w-full'>
                   <img
-                    src={`//imgSecondpage//${card.img}`}
+                    src={`/imgSecondpage/${card.img}`}
                     alt='img'
-                    className='w-full object-cover rounded-lg'
+                    className='w-full h-[180px] object-cover rounded-lg'
                   />
-
-                  <div className='flex justify-between w-full mt-[15px] px-1'>
-                    <p className='text-[#696984] font-[Poppins] text-[16px] font-[600]'>Design</p>
-                    <p className='text-[#696984] font-[Poppins] text-[16px] font-[600]'>3 Month</p>
+                  <div className='flex justify-between w-full mt-4 px-1'>
+                    <p className='text-[#696984] font-[Poppins] text-[14px] font-[600]'>Design</p>
+                    <p className='text-[#696984] font-[Poppins] text-[14px] font-[600]'>3 Month</p>
                   </div>
 
-                  <p className='font-[Poppins] text-[22px] font-[600] text-[#2F327D] w-full mt-[15px] leading-snug'>
-                    AWS Certified solutions <br /> Architect
+                  <p className='font-[Poppins] text-[18px] sm:text-[20px] font-[600] text-[#2F327D] w-full mt-3 leading-snug'>
+                    AWS Certified solutions Architect
                   </p>
 
-                  <p className='text-[#696984] font-[Poppins] text-[16px] mt-[15px] w-full leading-relaxed flex-grow'>
+                  <p className='text-[#696984] font-[Poppins] text-[14px] mt-2 w-full leading-relaxed'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                   </p>
                 </div>
-                <div className='flex justify-between items-center w-full mt-[30px] pt-[15px] border-t border-gray-100'>
-                  <div className='flex items-center gap-[10px] cursor-pointer'>
+                <div className='flex justify-between items-center w-full mt-6 pt-4 border-t border-gray-100'>
+                  <div className='flex items-center justify-center sm:justify-start gap-2 cursor-pointer w-full sm:w-auto'>
                     <img
                       src='/imgSecondpage/Group1.png'
                       alt='img'
-                      className='w-[40px] h-[40px] rounded-full'
+                      className='w-8 h-8 rounded-full'
                     />
-                    <span className='font-[Poppins] font-[600] text-[16px] text-[#2F327D]'>
+                    <span className='font-[Poppins] font-[600] text-[14px] text-[#2F327D]'>
                       Lina
                     </span>
-                    <span className='text-[14px] text-[#2F327D] inline-block rotate-90'>&gt;</span>
+                    <span className='text-[12px] text-[#2F327D] inline-block rotate-90'>&gt;</span>
                   </div>
-                  <div className='font-[Poppins] flex items-center gap-[10px]'>
-                    <span className='line-through text-gray-400 text-[16px]'>$100</span>
-                    <span className='text-[#49BBBD] text-[22px] font-[800]'>$80</span>
+                  <div className='font-[Poppins] flex items-center gap-2'>
+                    <span className='line-through text-gray-400 text-[14px]'>$100</span>
+                    <span className='text-[#49BBBD] text-[18px] sm:text-[20px] font-[800]'>
+                      $80
+                    </span>
                   </div>
                 </div>
               </div>
