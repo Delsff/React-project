@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export const SecondHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
   return (
     <>
       <style>{`
@@ -48,7 +57,7 @@ export const SecondHeader = () => {
             flex flex-col md:flex-row items-center gap-6 lg:gap-[60px] xl:gap-[80px]
             fixed md:static top-0 left-0 w-full h-screen md:w-auto md:h-auto 
             bg-white md:bg-transparent pt-24 md:pt-0 px-6 md:px-0
-            transition-all duration-300 ease-in-out
+            transition-all duration-300 ease-in-out overflow-y-auto
             ${isMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4 md:opacity-100 md:visible md:translate-y-0'}
           `}
           >

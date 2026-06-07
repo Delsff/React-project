@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useToggleWindow } from '../../store/Window';
 import { OpenWindowStore } from '../../StoreOpen/OpenWindowLogin';
@@ -7,7 +7,17 @@ import { OpenWindowStoreRegistr } from '../../StoreOpen/OpenWindowRegistation';
 export const Header = () => {
   const { openWindow } = useToggleWindow();
   const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
 
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
   return (
     <>
       <style>{`
@@ -83,19 +93,13 @@ export const Header = () => {
               <OpenWindowStoreRegistr />
             </div>
             <button
-              className='lg:hidden flex flex-col gap-[5px] cursor-pointer z-50'
+              className='lg:hidden flex flex-col gap-[5px] cursor-pointer z-30'
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label='menu'
             >
-              <span
-                className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`}
-              />
-              <span
-                className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}
-              />
-              <span
-                className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`}
-              />
+              <span className='block w-6 h-0.5 bg-white' />
+              <span className='block w-6 h-0.5 bg-white' />
+              <span className='block w-6 h-0.5 bg-white' />
             </button>
           </nav>
         </div>

@@ -3,25 +3,27 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 import { ToggleRegistr } from '../StoreOpen/ToggleWindow';
+
 type FormDataRegistr = {
   email: string;
   name: string;
   password: string;
 };
+
 export const schem = yup
   .object({
-    email: yup.string().required('This field is requred').email('invalid data'),
+    email: yup.string().required('This field is required').email('Invalid email'),
     name: yup
       .string()
-      .required('This field is requred')
-      .min(4, 'the name must be of at least 2 letters'),
+      .required('This field is required')
+      .min(4, 'The name must be at least 4 letters'),
     password: yup
       .string()
-      .required('This field is requred')
-      .min(8, 'the password must be of at least 2 letters')
+      .required('This field is required')
+      .min(8, 'The password must be at least 8 characters')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        'Password must contain at least one uppercase letter,one lowercase letter,one number and one special character',
+        'Password must contain at least one uppercase letter, one lowercase letter, one number and one special character',
       ),
   })
   .required();
@@ -32,92 +34,103 @@ export default function FormRegistr() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({ resolver: yupResolver(schem) });
-  const onSubmit: SubmitHandler<FormDataRegistr> = (data: any) => {
+  } = useForm<FormDataRegistr>({ resolver: yupResolver(schem) });
+
+  const onSubmit: SubmitHandler<FormDataRegistr> = (data) => {
     console.log(data);
     reset();
   };
+
   useEffect(() => {
     reset();
   }, [reset]);
+
   return (
     <>
       <style>{`
-  @keyframes slideUpFade {
-    from { opacity: 0; transform: translateY(32px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-  .animate-popup {
-    animation: slideUpFade 0.35s ease-out forwards;
-  }
-  .animate-item {
-    animation: fadeIn 0.5s ease-out forwards;
-    animation-fill-mode: backwards;
-  }
-`}</style>
-      <form onSubmit={handleSubmit(onSubmit)} className='w-[410px] h-[600px] mx-[20px] mt-[115px]'>
-        <h1 className='font-[Poppins] text-[20px] flex justify-center animate-item'>
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        .animate-item {
+          animation: fadeIn 0.5s ease-out forwards;
+          animation-fill-mode: backwards;
+        }
+      `}</style>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className='w-full max-w-[420px] mx-auto flex flex-col px-4 sm:px-0 items-center sm:items-stretch'
+      >
+        <h1 className='font-[Poppins] text-[24px] text-center w-full animate-item'>
           Welcome to lorem..!
         </h1>
-        <div>
+        <div className='mt-4 w-full flex justify-center animate-item'>
           <ToggleRegistr />
         </div>
-        <p className='font-[Poppins] mt-[30px] text-[15px] animate-item'>
-          Lorem Ipsum is simply dummy text of the printing and <br /> typesetting industry.
+        <p className='font-[Poppins] mt-4 text-[14px] text-gray-500 text-center leading-relaxed w-full animate-item'>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
         </p>
-        <div className='text-left flex flex-col gap-[10px] mt-[20px]'>
-          <div className='flex flex-wrap gap-[10px]'>
-            <h5>Email Address:</h5>
-            {errors.email && <p className='text-[red]'>{errors.email.message}</p>}
+        <div className='text-left flex flex-col gap-1.5 mt-5 w-full animate-item'>
+          <div className='flex justify-between items-center flex-wrap gap-2'>
+            <h5 className='font-medium text-[15px]'>Email Address:</h5>
+            {errors.email && (
+              <p className='text-[red] text-xs font-[Poppins]'>{errors.email.message}</p>
+            )}
           </div>
           <input
             type='email'
             {...register('email')}
-            className='w-[435px] h-[45px] border-1 border-[#49BBBD] rounded-full placeholder: pl-[30px] animate-item'
             placeholder='Enter your Email Address'
+            className='w-full h-[48px] border border-[#49BBBD] rounded-full pl-[24px] pr-[16px] outline-none focus:border-[#3EA5A6] transition-colors text-[15px]'
           />
         </div>
-        <div className='text-left flex flex-col gap-[10px] mt-[20px]'>
-          <div className='flex flex-wrap gap-[10px]'>
-            <h5>User Name:</h5> {errors.name && <p className='text-[red]'>{errors.name.message}</p>}
+        <div className='text-left flex flex-col gap-1.5 mt-4 w-full animate-item'>
+          <div className='flex justify-between items-center flex-wrap gap-2'>
+            <h5 className='font-medium text-[15px]'>User Name:</h5>
+            {errors.name && (
+              <p className='text-[red] text-xs font-[Poppins]'>{errors.name.message}</p>
+            )}
           </div>
           <input
             id='name'
+            type='text'
             {...register('name')}
             placeholder='Enter your User Name'
-            className='w-[435px] h-[45px] border-1 border-[#49BBBD] rounded-full placeholder: pl-[30px] animate-item'
+            className='w-full h-[48px] border border-[#49BBBD] rounded-full pl-[24px] pr-[16px] outline-none focus:border-[#3EA5A6] transition-colors text-[15px]'
           />
         </div>
-        <div className='text-left flex flex-col gap-[10px] mt-[20px] animate-item'>
-          <div className='flex flex-wrap gap-[10px]'>
-            <h5>Password:</h5>{' '}
-            {errors.password && <p className='text-[red]'>{errors.password.message}</p>}
+        <div className='text-left flex flex-col gap-1.5 mt-4 w-full animate-item'>
+          <div className='flex justify-between items-center flex-wrap gap-2'>
+            <h5 className='font-medium text-[15px]'>Password:</h5>
+            {errors.password && (
+              <p className='text-[red] text-xs font-[Poppins] max-w-[250px] text-right'>
+                {errors.password.message}
+              </p>
+            )}
           </div>
           <input
             type='password'
             {...register('password')}
             placeholder='Enter your password'
-            className='w-[435px] h-[45px] border-1 border-[#49BBBD] rounded-full placeholder: pl-[30px] animate-item'
+            className='w-full h-[48px] border border-[#49BBBD] rounded-full pl-[24px] pr-[16px] outline-none focus:border-[#3EA5A6] transition-colors text-[15px]'
           />
         </div>
-        <div className='flex justify-between w-[500px] my-[20px]'>
-          <label className='flex items-center gap-[15px] animate-item'>
-            <input type='checkbox' className='w-[20px] h-[20px] cursor-pointer' /> Remember me
+        <div className='flex justify-between items-center my-5 w-full text-[14px] font-[Poppins] flex-wrap gap-2'>
+          <label className='flex items-center gap-2 cursor-pointer select-none animate-item'>
+            <input type='checkbox' className='w-4 h-4 accent-[#49BBBD] cursor-pointer' />
+            Remember me
           </label>
-          <a href='#' className='float-right animate-item'>
+          <a href='#' className='text-[#49BBBD] hover:underline animate-item'>
             Forgot password?
           </a>
         </div>
-        <div>
+        <div className='w-full flex flex-col sm:items-end'>
           <button
-            className='font-[Poppins] cursor-pointer text-[black] text-[19px] font-[500] w-[210px] h-[45px] 
-              rounded-full bg-[#49BBBD] hover:bg-[#3EA5A6] transition ml-[300px] mb-[15px] animate-item'
+            type='submit'
+            className='font-[Poppins] cursor-pointer text-white text-[18px] font-medium w-full sm:w-[180px] h-[48px] 
+              rounded-full bg-[#49BBBD] hover:bg-[#3EA5A6] transition-all active:scale-95 shadow-md animate-item'
           >
-            Registr
+            Register
           </button>
         </div>
       </form>
