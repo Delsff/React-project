@@ -52,15 +52,16 @@ export const SecondHeader = () => {
               className={`w-6 h-0.5 bg-[#5B5B5B] transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}
             />
           </button>
-          <ul
-            className={`
-            flex flex-col md:flex-row items-center gap-6 lg:gap-[60px] xl:gap-[80px]
-            fixed md:static top-0 left-0 w-full h-screen md:w-auto md:h-auto 
-            bg-white md:bg-transparent pt-24 md:pt-0 px-6 md:px-0
-            transition-all duration-300 ease-in-out overflow-y-auto
-            ${isMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4 md:opacity-100 md:visible md:translate-y-0'}
-          `}
-          >
+        <ul
+  className={`
+    flex flex-col md:flex-row items-center gap-6 lg:gap-[60px] xl:gap-[80px]
+    fixed md:static top-0 left-0 w-full h-screen md:w-auto md:h-auto 
+    bg-white md:bg-transparent pt-24 md:pt-0 px-6 md:px-0
+    transition-all duration-300 ease-in-out 
+    overflow-y-auto md:overflow-visible /* <--- Исправление тут */
+    ${isMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4 md:opacity-100 md:visible md:translate-y-0'}
+  `}
+>
             <li className='font-[Poppins] cursor-pointer text-[#5B5B5B] text-[18px] lg:text-[22px] font-[500] hover:text-[#49BBBD] transition-colors'>
               <Link to='/' onClick={() => setIsMenuOpen(false)}>
                 Home
@@ -99,7 +100,7 @@ export const SecondHeader = () => {
                 />
                 <div className='cursor-pointer flex items-center select-none'>
                   <span className='font-[Poppins] font-[500] text-[18px] lg:text-[20px] text-[#252641]'>
-                    Lina{' '}
+                    Lina
                   </span>
                   <span className='text-[16px] lg:text-[18px] inline-block rotate-90 ml-1 text-[#5B5B5B]'>
                     &gt;
