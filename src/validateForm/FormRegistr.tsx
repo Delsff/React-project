@@ -61,7 +61,7 @@ export default function FormRegistr() {
         onSubmit={handleSubmit(onSubmit)}
         className='w-full max-w-[420px] mx-auto flex flex-col px-4 sm:px-0 items-center sm:items-stretch'
       >
-        <h1 className='font-[Poppins] text-[24px] text-center w-full animate-item'>
+        <h1 className='font-[Poppins] text-[24px] text-center w-full animate-item mt-[5px]'>
           Welcome to lorem..!
         </h1>
         <div className='mt-4 w-full flex justify-center animate-item'>

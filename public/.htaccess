@@ -1,0 +1,272 @@
+# ───────────────────────────────────────────────────────────────────────────
+# 1. РЕДИРЕКТЫ И CANONICAL URL
+# ───────────────────────────────────────────────────────────────────────────
+
+# Включаем модуль переписывания URL
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # ═══ Редирект с www на без www (или наоборот) ═══
+    # ВАРИАНТ 1: Редирект с www на без www
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+    
+    # ВАРИАНТ 2: Редирект без www на www (закомментирован)
+    # RewriteCond %{HTTP_HOST} !^www\. [NC]
+    # RewriteCond %{HTTP_HOST} !^localhost [NC]
+    # RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+    
+    
+    # ═══ Принудительный HTTPS ═══
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    
+    # ═══ Удаление trailing slash (/) в конце URL ═══
+    # SEO: избегаем дублирования /page и /page/
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [R=301,L]
+    
+    
+    # ═══ Редиректы для изменившихся URL ═══
+    # Пример: старый URL → новый URL
+    # Redirect 301 /old-page.html /new-page
+    # Redirect 301 /blog/2023/article /blog/article
+</IfModule>
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 2. СЖАТИЕ GZIP (ускорение загрузки)
+# ───────────────────────────────────────────────────────────────────────────
+
+<IfModule mod_deflate.c>
+    # Сжимаем HTML, CSS, JavaScript, XML, JSON
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/atom_xml
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE image/svg+xml
+    
+    # Исключаем сжатие для старых браузеров
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 3. КЭШИРОВАНИЕ БРАУЗЕРА (Browser Caching)
+# ───────────────────────────────────────────────────────────────────────────
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+    
+    # HTML - кэшируем на 1 день
+    ExpiresByType text/html "access plus 1 day"
+    
+    # CSS и JavaScript - кэшируем на 1 год
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+    
+    # Изображения - кэшируем на 1 год
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # Шрифты - кэшируем на 1 год
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    
+    # Видео и аудио - кэшируем на 1 месяц
+    ExpiresByType video/mp4 "access plus 1 month"
+    ExpiresByType video/webm "access plus 1 month"
+    ExpiresByType audio/mp3 "access plus 1 month"
+    
+    # PDF и документы - кэшируем на 1 месяц
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType application/zip "access plus 1 month"
+</IfModule>
+
+# Альтернатива через Cache-Control заголовки
+<IfModule mod_headers.c>
+    # CSS, JavaScript, шрифты - 1 год
+    <FilesMatch "\.(css|js|woff|woff2|ttf|otf)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+    
+    # Изображения - 1 год
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+    
+    # HTML - 1 день
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "max-age=86400, public, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 4. БЕЗОПАСНОСТЬ (Security Headers)
+# ───────────────────────────────────────────────────────────────────────────
+
+<IfModule mod_headers.c>
+    # X-Frame-Options: защита от clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # X-Content-Type-Options: предотвращает MIME-sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # X-XSS-Protection: защита от XSS атак (для старых браузеров)
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Referrer-Policy: контроль передачи referrer
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Permissions-Policy: контроль доступа к API браузера
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    
+    # Content-Security-Policy (CSP) - НАСТРОЙТЕ под ваш проект!
+    # Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
+    
+    # Strict-Transport-Security (HSTS): принудительный HTTPS
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 5. ОПТИМИЗАЦИЯ ПРОИЗВОДИТЕЛЬНОСТИ
+# ───────────────────────────────────────────────────────────────────────────
+
+# Отключаем ETags (конфликтуют с кэшированием)
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
+
+# Включаем KeepAlive для повторного использования соединений
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+</IfModule>
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 6. ЧИСТЫЕ URL (Удаление расширений .html, .php)
+# ───────────────────────────────────────────────────────────────────────────
+
+<IfModule mod_rewrite.c>
+    # Удаляем .html из URL
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.html -f
+    RewriteRule ^(.+)$ $1.html [L,QSA]
+    
+    # Редирект с .html на без расширения
+    RewriteCond %{THE_REQUEST} ^GET\ /[^?\s]+\.html
+    RewriteRule (.*)\.html$ /$1 [L,R=301]
+    
+    # То же самое для .php (если используете)
+    # RewriteCond %{REQUEST_FILENAME} !-d
+    # RewriteCond %{REQUEST_FILENAME}\.php -f
+    # RewriteRule ^(.+)$ $1.php [L,QSA]
+    # RewriteCond %{THE_REQUEST} ^GET\ /[^?\s]+\.php
+    # RewriteRule (.*)\.php$ /$1 [L,R=301]
+</IfModule>
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 7. ЗАЩИТА ФАЙЛОВ И ДИРЕКТОРИЙ
+# ───────────────────────────────────────────────────────────────────────────
+
+# Запрещаем доступ к .htaccess и другим скрытым файлам
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Защита конфигурационных файлов
+<FilesMatch "\.(env|ini|log|config)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Запрещаем листинг директорий
+Options -Indexes
+
+# Запрещаем выполнение PHP в директории uploads
+<Directory /uploads>
+    php_flag engine off
+</Directory>
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 8. MIME TYPES (правильные типы файлов)
+# ───────────────────────────────────────────────────────────────────────────
+
+<IfModule mod_mime.c>
+    # Современные форматы изображений
+    AddType image/webp .webp
+    AddType image/avif .avif
+    
+    # Шрифты
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+    AddType font/ttf .ttf
+    AddType font/otf .otf
+    
+    # Видео
+    AddType video/mp4 .mp4
+    AddType video/webm .webm
+    
+    # JSON
+    AddType application/json .json
+    
+    # Web App Manifest
+    AddType application/manifest+json .webmanifest
+    
+    # SVG
+    AddType image/svg+xml .svg .svgz
+    AddEncoding gzip .svgz
+</IfModule>
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 9. CUSTOM ERROR PAGES (Кастомные страницы ошибок)
+# ───────────────────────────────────────────────────────────────────────────
+
+ErrorDocument 404 /404.html
+ErrorDocument 403 /403.html
+ErrorDocument 500 /500.html
+
+
+# ───────────────────────────────────────────────────────────────────────────
+# 10. БЛОКИРОВКА ВРЕДОНОСНЫХ БОТОВ
+# ───────────────────────────────────────────────────────────────────────────
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_USER_AGENT} ^.*(AhrefsBot|SemrushBot|MJ12bot|DotBot).*$ [NC]
+    RewriteRule .* - [F,L]
+    RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+    RewriteCond %{HTTP_USER_AGENT} ^(-|=" "|)$ [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
