@@ -26,7 +26,6 @@ export const SecondPageMain = () => {
   return (
     <>
       <style>{`
-        /* Анимация мгновенного появления для главного промо-блока */
         @keyframes mainHeroFadeIn {
           from {
             opacity: 0;
@@ -40,8 +39,6 @@ export const SecondPageMain = () => {
         .animate-hero-block {
           animation: mainHeroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-
-        /* Анимации по скроллу для остальных блоков */
         .scroll-anim {
           opacity: 0;
           transform: translateY(30px); 
