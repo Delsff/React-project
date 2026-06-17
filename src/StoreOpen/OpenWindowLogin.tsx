@@ -47,7 +47,7 @@ export const CloseWindow = () => {
           </div>
           <button
             onClick={closeWindow}
-            className='absolute top-4 right-4 font-[Poppins] cursor-pointer text-gray-500 hover:text-red-500 text-[15px] font-medium px-4 py-2 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors'
+            className='absolute top-4 right-4 font-[Poppins] cursor-pointer text-gray-500 hover:text-red-500 text-[15px] font-medium px-4 py-2 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors mb-[5px]'
           >
             Close
           </button>
