@@ -168,7 +168,7 @@ export const CareersHeader = () => {
                 <div className='flex flex-col mt-8 sm:mt-10 gap-5 sm:gap-7'>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
                     <img
-                      src='public/imgThreePage/icon.png'
+                      src='/imgThreePage/icon.png'
                       alt='icon'
                       className='w-5 h-5 shrink-0'
                     />
@@ -176,7 +176,7 @@ export const CareersHeader = () => {
                   </p>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
                     <img
-                      src='public/imgThreePage/icon.png'
+                      src='/imgThreePage/icon.png'
                       alt='icon'
                       className='w-5 h-5 shrink-0'
                     />
@@ -184,7 +184,7 @@ export const CareersHeader = () => {
                   </p>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
                     <img
-                      src='public/imgThreePage/icon.png'
+                      src='/imgThreePage/icon.png'
                       alt='icon'
                       className='w-5 h-5 shrink-0'
                     />
@@ -210,7 +210,7 @@ export const CareersHeader = () => {
                 <div className='flex flex-col mt-8 sm:mt-10 gap-4 sm:gap-5 px-1 md:px-5'>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
                     <img
-                      src='public/imgThreePage/goldIcon.png'
+                      src='/imgThreePage/goldIcon.png'
                       alt='Gold-Icon'
                       className='w-5 h-5 shrink-0'
                     />
@@ -218,7 +218,7 @@ export const CareersHeader = () => {
                   </p>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
                     <img
-                      src='public/imgThreePage/goldIcon.png'
+                      src='/imgThreePage/goldIcon.png'
                       alt='Gold-Icon'
                       className='w-5 h-5 shrink-0'
                     />
@@ -226,7 +226,7 @@ export const CareersHeader = () => {
                   </p>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
                     <img
-                      src='public/imgThreePage/goldIcon.png'
+                      src='/imgThreePage/goldIcon.png'
                       alt='Gold-Icon'
                       className='w-5 h-5 shrink-0'
                     />
@@ -234,7 +234,7 @@ export const CareersHeader = () => {
                   </p>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
                     <img
-                      src='public/imgThreePage/goldIcon.png'
+                      src='/imgThreePage/goldIcon.png'
                       alt='Gold-Icon'
                       className='w-5 h-5 shrink-0'
                     />
@@ -244,7 +244,7 @@ export const CareersHeader = () => {
                   </p>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
                     <img
-                      src='public/imgThreePage/goldIcon.png'
+                      src='/imgThreePage/goldIcon.png'
                       alt='Gold-Icon'
                       className='w-5 h-5 shrink-0'
                     />
@@ -265,7 +265,7 @@ export const CareersHeader = () => {
                 <div className='flex flex-col mt-8 sm:mt-10 gap-4 sm:gap-5 px-1 md:px-3'>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
                     <img
-                      src='public/imgThreePage/blueIcon.png'
+                      src='/imgThreePage/blueIcon.png'
                       alt='Blue-Icon'
                       className='w-5 h-5 shrink-0'
                     />
@@ -273,7 +273,7 @@ export const CareersHeader = () => {
                   </p>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
                     <img
-                      src='public/imgThreePage/blueIcon.png'
+                      src='/imgThreePage/blueIcon.png'
                       alt='Blue-Icon'
                       className='w-5 h-5 shrink-0'
                     />
@@ -281,7 +281,7 @@ export const CareersHeader = () => {
                   </p>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
                     <img
-                      src='public/imgThreePage/blueIcon.png'
+                      src='/imgThreePage/blueIcon.png'
                       alt='Blue-Icon'
                       className='w-5 h-5 shrink-0'
                     />
@@ -289,7 +289,7 @@ export const CareersHeader = () => {
                   </p>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
                     <img
-                      src='public/imgThreePage/blueIcon.png'
+                      src='/imgThreePage/blueIcon.png'
                       alt='Blue-Icon'
                       className='w-5 h-5 shrink-0'
                     />

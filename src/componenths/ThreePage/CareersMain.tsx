@@ -181,7 +181,7 @@ export const CareersMain = () => {
           <div className='w-full h-auto flex flex-nowrap grid-cols-4 justify-start sm:justify-center gap-5 overflow-x-auto sm:overflow-visible px-4 sm:px-10 lg:px-14 pb-4 sm:pb-0 snap-x snap-mandatory sm:snap-none'>
             <div className='scroll-anim delay-1 snap-center shrink-0 w-[280px] sm:w-[300px] lg:w-[354px] h-auto sm:h-[395px] rounded-xl bg-[white] flex flex-col gap-6 sm:gap-10 p-4 sm:p-0'>
               <img
-                src='public/imgThreePage/girl.png'
+                src='/imgThreePage/girl.png'
                 alt='girl'
                 className='w-[90px] h-[90px] sm:w-[118px] sm:h-[118px] mx-auto sm:pt-4'
               />
@@ -195,7 +195,7 @@ export const CareersMain = () => {
             </div>
             <div className='scroll-anim delay-2 snap-center shrink-0 w-[280px] sm:w-[300px] lg:w-[354px] h-auto sm:h-[395px] rounded-xl bg-[white] flex flex-col gap-6 sm:gap-10 p-4 sm:p-0'>
               <img
-                src='public/imgThreePage/girl.png'
+                src='/imgThreePage/girl.png'
                 alt='girl'
                 className='w-[90px] h-[90px] sm:w-[118px] sm:h-[118px] mx-auto sm:pt-4'
               />
@@ -209,7 +209,7 @@ export const CareersMain = () => {
             </div>
             <div className='scroll-anim delay-3 snap-center shrink-0 w-[280px] sm:w-[300px] lg:w-[354px] h-auto sm:h-[395px] rounded-xl bg-[white] flex flex-col gap-6 sm:gap-10 p-4 sm:p-0'>
               <img
-                src='public/imgThreePage/girl.png'
+                src='/imgThreePage/girl.png'
                 alt='girl'
                 className='w-[90px] h-[90px] sm:w-[118px] sm:h-[118px] mx-auto sm:pt-4'
               />
@@ -223,7 +223,7 @@ export const CareersMain = () => {
             </div>
             <div className='scroll-anim delay-4 snap-center shrink-0 w-[280px] sm:w-[300px] lg:w-[354px] h-auto sm:h-[395px] rounded-xl bg-[white] flex flex-col gap-6 sm:gap-10 p-4 sm:p-0'>
               <img
-                src='public/imgThreePage/girl.png'
+                src='/imgThreePage/girl.png'
                 alt='girl'
                 className='w-[90px] h-[90px] sm:w-[118px] sm:h-[118px] mx-auto sm:pt-4'
               />
@@ -282,7 +282,7 @@ export const CareersMain = () => {
       <div>
         <div className='w-full h-auto flex flex-col lg:flex-row justify-center items-center gap-10 lg:gap-6 mx-auto px-4 sm:px-10 py-16 sm:py-24 lg:py-32'>
           <div className='scroll-anim delay-1 w-full max-w-[500px] lg:max-w-none lg:w-[786px] h-auto shadow-lg flex flex-col gap-4 sm:gap-5'>
-            <img src='public/imgSecondpage/Group10.png' alt='img' className='px-4 py-4 w-full' />
+            <img src='/imgSecondpage/Group10.png' alt='img' className='px-4 py-4 w-full' />
             <p className='text-[20px] sm:text-[24px] lg:text-[26px] text-left px-4 text-[#252641] font-[Poppins] font-bold'>
               Become a Teacher
             </p>
@@ -295,7 +295,7 @@ export const CareersMain = () => {
             </button>
           </div>
           <div className='scroll-anim delay-2 w-full max-w-[500px] lg:max-w-none lg:w-[786px] h-auto shadow-lg flex flex-col gap-4 sm:gap-5'>
-            <img src='public/imgSecondpage/Group10.png' alt='img' className='px-4 py-4 w-full' />
+            <img src='/imgSecondpage/Group10.png' alt='img' className='px-4 py-4 w-full' />
             <p className='text-[20px] sm:text-[24px] lg:text-[26px] text-left px-4 text-[#252641] font-[Poppins] font-bold'>
               Become a Coursector
             </p>
