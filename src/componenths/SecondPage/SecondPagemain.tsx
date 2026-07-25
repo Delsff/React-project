@@ -225,7 +225,6 @@ export const SecondPageMain = () => {
                   <p className='font-[Poppins] text-[18px] sm:text-[20px] font-[600] text-[#2F327D] w-full mt-3 leading-snug'>
                     AWS Certified solutions Architect
                   </p>
-
                   <p className='text-[#696984] font-[Poppins] text-[14px] mt-2 w-full leading-relaxed'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                   </p>

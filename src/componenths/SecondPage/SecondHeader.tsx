@@ -71,9 +71,9 @@ export const SecondHeader = () => {
               </Link>
             </li>
             <li className='font-[Poppins] cursor-pointer text-[#5B5B5B] text-[18px] lg:text-[22px] font-[500] hover:text-[#49BBBD] transition-colors'>
-              <a href='#' onClick={() => setIsMenuOpen(false)}>
+              <Link to='/careers' onClick={() => setIsMenuOpen(false)}>
                 Careers
-              </a>
+              </Link>
             </li>
             <li className='font-[Poppins] cursor-pointer text-[#5B5B5B] text-[18px] lg:text-[22px] font-[500] hover:text-[#49BBBD] transition-colors'>
               <a href='#' onClick={() => setIsMenuOpen(false)}>

@@ -77,6 +77,13 @@ export const Header = () => {
                     >
                       Courses
                     </Link>
+                  ) : item === 'Careers' ? (
+                    <Link
+                      to='/careers'
+                      className='font-[Poppins] text-white text-[25px] font-[500] hover:text-gray-300 transition'
+                    >
+                      Careers
+                    </Link>
                   ) : (
                     <a
                       href='#'
@@ -123,6 +130,8 @@ export const Header = () => {
                 <Link to='/'>Home</Link>
               ) : item === 'Courses' ? (
                 <Link to='/courses'>Courses</Link>
+              ) : item === 'Careers' ? (
+                <Link to='/careers'>Careers</Link>
               ) : (
                 <a href='#'>{item}</a>
               )}
