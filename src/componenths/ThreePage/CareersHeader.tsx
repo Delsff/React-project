@@ -117,14 +117,14 @@ export const CareersHeader = () => {
               </Link>
             </li>
             <li className='font-[Poppins] cursor-pointer text-[#5B5B5B] text-[18px] lg:text-[22px] font-[500] hover:text-[#49BBBD] transition-colors'>
-              <a href='#' onClick={() => setIsMenuOpen(false)}>
+              <Link to='/blog' onClick={() => setIsMenuOpen(false)}>
                 Blog
-              </a>
+              </Link>
             </li>
             <li className='font-[Poppins] cursor-pointer text-[#5B5B5B] text-[18px] lg:text-[22px] font-[500] hover:text-[#49BBBD] transition-colors'>
-              <a href='#' onClick={() => setIsMenuOpen(false)}>
+              <Link to='/about' onClick={() => setIsMenuOpen(false)}>
                 About us
-              </a>
+              </Link>
             </li>
             <li className='mt-4 md:mt-0 pt-4 md:pt-0 border-t md:border-t-0 border-gray-100 w-full md:w-auto flex justify-center'>
               <div className='flex items-center gap-[12px] sm:gap-[15px]'>
@@ -167,27 +167,15 @@ export const CareersHeader = () => {
                 </p>
                 <div className='flex flex-col mt-8 sm:mt-10 gap-5 sm:gap-7'>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
-                    <img
-                      src='/imgThreePage/icon.png'
-                      alt='icon'
-                      className='w-5 h-5 shrink-0'
-                    />
+                    <img src='/imgThreePage/icon.png' alt='icon' className='w-5 h-5 shrink-0' />
                     <span className='text-[16px] sm:text-[18px]'>Components-driven system</span>
                   </p>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
-                    <img
-                      src='/imgThreePage/icon.png'
-                      alt='icon'
-                      className='w-5 h-5 shrink-0'
-                    />
+                    <img src='/imgThreePage/icon.png' alt='icon' className='w-5 h-5 shrink-0' />
                     <span className='text-[16px] sm:text-[18px]'>Sales-boosting landing pages</span>
                   </p>
                   <p className='flex flex-nowrap gap-4 sm:gap-5 items-center'>
-                    <img
-                      src='/imgThreePage/icon.png'
-                      alt='icon'
-                      className='w-5 h-5 shrink-0'
-                    />
+                    <img src='/imgThreePage/icon.png' alt='icon' className='w-5 h-5 shrink-0' />
                     <span className='text-[16px] sm:text-[18px]'>Awesome Feather icons pack</span>
                   </p>
                 </div>

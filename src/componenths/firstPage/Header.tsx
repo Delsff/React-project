@@ -61,33 +61,47 @@ export const Header = () => {
               />
             </a>
             <ul className='hidden lg:flex gap-[60px]'>
-              {['Home', 'Courses', 'Careers', 'Blog', 'About us'].map((item) => (
+              {['Home', 'Courses', 'Careers', 'Blog', 'About'].map((item) => (
                 <li key={item}>
                   {item === 'Home' ? (
                     <Link
                       to='/'
-                      className='font-[Poppins] text-white text-[25px] font-[500] hover:text-gray-300 transition visited:text-gray-400'
+                      className='font-[Poppins] text-white text-[25px] font-medium hover:text-gray-300 transition visited:text-gray-400'
                     >
                       Home
                     </Link>
                   ) : item === 'Courses' ? (
                     <Link
                       to='/courses'
-                      className='font-[Poppins] text-white text-[25px] font-[500] hover:text-gray-300 transition'
+                      className='font-[Poppins] text-white text-[25px] font-medium hover:text-gray-300 transition'
                     >
                       Courses
                     </Link>
                   ) : item === 'Careers' ? (
                     <Link
                       to='/careers'
-                      className='font-[Poppins] text-white text-[25px] font-[500] hover:text-gray-300 transition'
+                      className='font-[Poppins] text-white text-[25px] font-medium hover:text-gray-300 transition'
                     >
                       Careers
+                    </Link>
+                  ) : item === 'Blog' ? (
+                    <Link
+                      to='/blog'
+                      className='font-[Poppins] text-white text-[25px] font-medium hover:text-gray-300 transition'
+                    >
+                      Blog
+                    </Link>
+                  ) : item === 'About' ? (
+                    <Link
+                      to='/about'
+                      className='font-[Poppins] text-white text-[25px] font-medium hover:text-gray-300 transition'
+                    >
+                      About us
                     </Link>
                   ) : (
                     <a
                       href='#'
-                      className='font-[Poppins] text-white text-[25px] font-[500] hover:text-gray-300 transition'
+                      className='font-[Poppins] text-white text-[25px] font-medium hover:text-gray-300 transition'
                     >
                       {item}
                     </a>
@@ -120,7 +134,7 @@ export const Header = () => {
             <span className='block w-6 h-0.5 bg-white rotate-45 translate-y-[3px]' />
             <span className='block w-6 h-0.5 bg-white -rotate-45 -translate-y-[5px]' />
           </button>
-          {['Home', 'Courses', 'Careers', 'Blog', 'About us'].map((item) => (
+          {['Home', 'Courses', 'Careers', 'Blog', 'About'].map((item) => (
             <span
               key={item}
               className='font-[Poppins] text-white text-[26px] font-[500]'
@@ -132,6 +146,10 @@ export const Header = () => {
                 <Link to='/courses'>Courses</Link>
               ) : item === 'Careers' ? (
                 <Link to='/careers'>Careers</Link>
+              ) : item === 'Blog' ? (
+                <Link to='/blog'>Blog</Link>
+              ) : item === 'About' ? (
+                <Link to='/about'>About Us</Link>
               ) : (
                 <a href='#'>{item}</a>
               )}

@@ -4,6 +4,8 @@ import { Home } from './Pages/HomePage';
 import { Courses } from './Pages/Courses';
 import { NotFoundPage } from './componenths/NotFoundPage/NotFoundPage';
 import { Careers } from './Pages/Careers';
+import { Blog } from './Pages/Blog';
+import { About } from './Pages/About';
 function App() {
   return (
     <>
@@ -12,6 +14,8 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/courses' element={<Courses />} />
           <Route path='/careers' element={<Careers />} />
+          <Route path='/blog' element={<Blog />} />
+          <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

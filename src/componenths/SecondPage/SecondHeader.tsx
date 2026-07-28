@@ -76,14 +76,14 @@ export const SecondHeader = () => {
               </Link>
             </li>
             <li className='font-[Poppins] cursor-pointer text-[#5B5B5B] text-[18px] lg:text-[22px] font-[500] hover:text-[#49BBBD] transition-colors'>
-              <a href='#' onClick={() => setIsMenuOpen(false)}>
+              <Link to='/blog' onClick={() => setIsMenuOpen(false)}>
                 Blog
-              </a>
+              </Link>
             </li>
             <li className='font-[Poppins] cursor-pointer text-[#5B5B5B] text-[18px] lg:text-[22px] font-[500] hover:text-[#49BBBD] transition-colors'>
-              <a href='#' onClick={() => setIsMenuOpen(false)}>
+              <Link to='/about' onClick={() => setIsMenuOpen(false)}>
                 About us
-              </a>
+              </Link>
             </li>
             <li className='mt-4 md:mt-0 pt-4 md:pt-0 border-t md:border-t-0 border-gray-100 w-full md:w-auto flex justify-center'>
               <div className='flex items-center gap-[12px] sm:gap-[15px]'>

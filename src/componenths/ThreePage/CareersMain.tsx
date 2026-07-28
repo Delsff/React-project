@@ -290,7 +290,7 @@ export const CareersMain = () => {
               Class, launched less than a year ago by Blackboard co-founder Michael Chasen,
               integrates exclusively...
             </p>
-            <button className='ml-auto mr-4 sm:mr-5 mt-6 sm:mt-16 lg:mt-25 mb-6 lg:mb-0 w-full max-w-[236px] h-[52px] sm:h-[60px] text-white bg-[#49BBBD] font-[Poppins] cursor-pointer text-[16px] sm:text-[18px] rounded-lg hover:bg-[#38999A] transition shadow-md active:scale-95'>
+            <button className='ml-auto mr-4 sm:mr-5 mt-6 sm:mt-16 lg:mt-25 lg:mb-0 w-full max-w-[236px] h-[52px] sm:h-[60px] text-white bg-[#49BBBD] font-[Poppins] cursor-pointer text-[16px] sm:text-[18px] rounded-lg hover:bg-[#38999A] transition shadow-md active:scale-95 relative bottom-5'>
               Apply a Teacher
             </button>
           </div>
@@ -303,7 +303,7 @@ export const CareersMain = () => {
               Class, launched less than a year ago by Blackboard co-founder Michael Chasen,
               integrates exclusively...
             </p>
-            <button className='ml-auto mr-4 sm:mr-5 mt-6 sm:mt-16 lg:mt-25 mb-6 lg:mb-0 w-full max-w-[236px] h-[52px] sm:h-[60px] text-white bg-[#49BBBD] font-[Poppins] cursor-pointer text-[16px] sm:text-[18px] rounded-lg hover:bg-[#38999A] transition shadow-md active:scale-95'>
+            <button className='ml-auto mr-4 sm:mr-5 mt-6 sm:mt-16 lg:mt-25 mb-6 lg:mb-0 w-full max-w-[236px] h-[52px] sm:h-[60px] text-white bg-[#49BBBD] font-[Poppins] cursor-pointer text-[16px] sm:text-[18px] rounded-lg hover:bg-[#38999A] transition shadow-md active:scale-95 relative bottom-5'>
               Apply a Coursector
             </button>
           </div>
